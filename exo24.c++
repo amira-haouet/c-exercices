@@ -1,29 +1,61 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
-class Personne {
+class Personne
+{
 protected:
-    std::string nom;
-    std::string prenom;
+    string nom;
+    string prenom;
     int age;
     char sexe;
 
 public:
-    Personne(std::string n, std::string p, int a, char s)
-        : nom(n), prenom(p), age(a), sexe(s) {}
+    Personne(string n, string p, int a, char s)
+        : nom(n), prenom(p), age(a), sexe(s)
+    {
+    }
 
-  
+    string getNom() const
+    {
+        return nom;
+    }
+    string getPrenom() const
+    {
+        return prenom;
+    }
+    int getAge() const
+    {
+        return age;
+    }
+    char getSexe() const
+    {
+        return sexe;
+    }
+
+    // Méthode Affiche
+    virtual void Affiche() const
+    {
+        cout << "Nom: " << nom << ", Prénom: " << prenom
+             << ", Age: " << age << ", Sexe: " << sexe << endl;
+    }
 };
 
+class Etudiant : public Personne
+{
 
-
-class Etudiant : public Personne {
     int note;
 
 public:
-    // Constructeur
-    Etudiant(std::string n, std::string p, int a, char s, int note)
-        : Personne(n, p, a, s), note(note) {}
-
- 
+    Etudiant(string n, string p, int a, char s, int note) : Personne(n, p, a, s), note(note)
+    {
+    }
 };
+
+int main()
+{
+    Personne *p = new Personne("Gamotte", "Albert", 34, 'M');
+    p->Affiche();
+    Etudiant e("Gamotte", "Albert", 34, 'M', 13);
+    e.Affiche();
+}

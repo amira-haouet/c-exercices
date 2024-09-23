@@ -50,14 +50,24 @@ public:
         return *this;
     }
 
-    Chaine &operator+(const Chaine &chaine)
+    // Surcharge de l'opérateur +
+    Chaine operator+(const Chaine &c) const
     {
-        return;
+        // Chaine result;
+        // result.ch = new char[strlen(this->ch) + strlen(c.ch) + 1];
+        // strcpy(result.ch, this->ch);
+        // strcat(result.ch, c.ch);
+        // return result;
     }
 
-    Chaine &operator+(const Chaine &chaine)
+    // Surcharge de l'opérateur []
+    char &operator[](size_t index) const
     {
-        return;
+        if (index < strlen(ch)) // Vérifier l'index
+        {
+          //  return ch[index];
+        }
+     //   return '\0'; // Retourner nul si l'index est invalide
     }
 };
 
@@ -82,3 +92,7 @@ int main()
 
     return 0;
 }
+
+
+
+

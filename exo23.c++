@@ -1,51 +1,84 @@
 #include <iostream>
+using namespace std;
 
-class Vect
+class Chaine
 {
-    int nbElements;
-    int *Adresse; // Adresse de la zone dynamique contenant les éléments
+private:
+    const char *ch;
 
 public:
-    Vect(int taille)
+    Chaine(const char *ch)
     {
-        nbElements = taille;
-        Adresse = new int[nbElements]; // Allouer dynamiquement un tableau d'entiers
-        for (int i = 0; i < nbElements; ++i)
-        {
-            Adresse[i] = 0;
-        }
+        this->ch = ch;
+        cout << "constructeur" << endl;
     }
 
-    // Destructeur pour libérer la mémoire
-    ~Vect()
+    Chaine(const Chaine &chaine)
     {
-        delete[] Adresse; // Libérer la mémoire allouée dynamiquement
+        this->ch = chaine.ch;
+        cout << "copyConstructeur" << endl;
     }
 
-    // Surcharge de l'opérateur [] pour accéder à un élément par son indice
-    int &operator[](int index)
+    Chaine()
     {
-        if (index >= 0 && index < nbElements)
+        this->ch = "";
+        cout << "constructeur par défaut" << endl;
+    }
+    ~Chaine()
+    {
+        cout << "distructeur" << endl;
+    }
+
+    const char *afficher()
+    {
+        return this->ch;
+    }
+
+    bool egal(Chaine &c)
+    {
+        return this->ch == c.ch;
+    }
+
+    Chaine &operator=(const Chaine &chaine)
+    {
+        if (this == &chaine)
         {
-            return Adresse[index];
+            return *this;
         }
-        else
-        {
-            std::cerr << "Index out of bounds!" << std::endl;
-            exit(EXIT_FAILURE);
-        }
+        this->ch = chaine.ch;
+        cout << "operateur d'affectation" << endl;
+        return *this;
+    }
+
+    Chaine &operator+(const Chaine &chaine)
+    {
+        return;
+    }
+
+    Chaine &operator+(const Chaine &chaine)
+    {
+        return;
     }
 };
 
 int main()
 {
-    Vect vect(5);
+    Chaine c1("Bonjour"), c2 = c1;
+    cout << "La chaine c1 a pour valeur \"" << c1.afficher() << "\"\n";
+    cout << "La chaine c2 a pour valeur \"" << c2.afficher() << "\"\n";
+    if (c1.egal(c2))
+        cout << "Egalite des chaines \n";
+    else
+        cout << "Inegalite des chaines \n";
 
-    vect[0] = 10;
-    vect[1] = 20;
-    vect[2] = 30;
-    std::cout << "Élément à l'indice 0: " << vect[0] << std::endl;
-    std::cout << "Élément à l'indice 1: " << vect[1] << std::endl;
-    std::cout << "Élément à l'indice 2: " << vect[2] << std::endl;
+    // Ajout d'un constructeur par défaut
+    Chaine c3;
+    c3 = c2;
+    cout << "La chaine c3 a pour valeur \"" << c3.afficher() << "\"\n";
+    c3 = "coucou";
+    cout << "La chaine c2 a pour valeur \"" << c2.afficher() << "\"\n";
+
+    cout << "La chaine c3 a pour valeur \"" << c3.afficher() << "\"\n";
+
     return 0;
 }
