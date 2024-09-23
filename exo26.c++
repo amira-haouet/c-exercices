@@ -33,7 +33,6 @@ public:
         return sqrt(pow(p2.getD1() - p1.getD1(), 2) + pow(p2.getD2() - p1.getD2(), 2));
     }
 
-    // Opérateur d'equal
     bool operator==(const Segment& other)  {
         return (p1 == other.p1 && p2 == other.p2) || (p1 == other.p2 && p2 == other.p1);
     }
@@ -44,10 +43,9 @@ public:
     // Constructeur
     Vecteur(Point x, Point y) : Segment(x, y) {}
 
-    // Opérateur d'equal
-    bool operator==(const Vecteur& other)  {
-        return Segment::operator==(other);
-    }
+    // bool operator==(const Vecteur& other)  {
+    //     return Segment::operator==(other);
+    // }
 };
 
 int main() {

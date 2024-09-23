@@ -18,12 +18,13 @@ public:
         }
     }
 
- 
     // Constructeur  copie
-    Vect(const Vect& other) {
+    Vect(const Vect &other)
+    {
         nbElements = other.nbElements; // Copier le nombre d'éléments
         Adresse = new int[nbElements]; // Allouer de la mémoire pour le nouveau tableau
-        for (int i = 0; i < nbElements; ++i) {
+        for (int i = 0; i < nbElements; ++i)
+        {
             Adresse[i] = other.Adresse[i]; // Copier les éléments
         }
     }
@@ -33,16 +34,29 @@ public:
         delete[] Adresse;
     }
 
+    // int &operator[](int i)
+    // {
+
+    //     if (i >= 0 && i < nbElements)
+    //     {
+    //         return Adresse[i];
+    //     }
+    //     else
+    //     {
+    //         cout << "error , out de l'element  " << endl;
+    //     }
+    // }
+
     int &operator[](int i)
     {
-        if (i >= 0 && i < nbElements)
+
+        do
+
         {
+
             return Adresse[i];
-        }
-        else
-        {
-            cout << "error , out de l'element  " << endl;
-        }
+            i++;
+        } while (i >= 0 && i < nbElements);
     }
 };
 
@@ -56,5 +70,6 @@ int main()
     cout << "Élément à l'indice 0: " << vect[0] << endl;
     cout << "Élément à l'indice 1: " << vect[1] << endl;
     cout << "Élément à l'indice 2: " << vect[2] << endl;
+
     return 0;
 }
