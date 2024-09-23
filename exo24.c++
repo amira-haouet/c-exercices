@@ -57,10 +57,17 @@ public:
         : Personne(n, p, a, s), note(note) {
     }
 
-    void Affiche() const {
-        cout << "Nom: " << getNom() << ", Prénom: " << getPrenom()
-             << ", Age: " << getAge() << ", Sexe: " << getSexe()
-             << ", Note: " << getNote() << endl;
+    // void Affiche() const {
+    //     cout << "Nom: " << getNom() << ", Prénom: " << getPrenom()
+    //          << ", Age: " << getAge() << ", Sexe: " << getSexe()
+    //          << ", Note: " << getNote() << endl;
+    // }
+
+
+    void Affiche() const
+    {
+        Personne::Affiche();
+        cout << ", Note: " << getNote() << endl;
     }
 
     int getNote() const {
