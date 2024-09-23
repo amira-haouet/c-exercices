@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+using namespace std;
 
 class Vect
 {
@@ -16,23 +18,20 @@ public:
         }
     }
 
-    // Destructeur pour libérer la mémoire
     ~Vect()
     {
-        delete[] Adresse; // Libérer la mémoire allouée dynamiquement
+        delete[] Adresse;
     }
 
-    // Surcharge de l'opérateur [] pour accéder à un élément par son indice
-    int &operator[](int index)
+    int &operator[](int i)
     {
-        if (index >= 0 && index < nbElements)
+        if (i >= 0 && i < nbElements)
         {
-            return Adresse[index];
+            return Adresse[i];
         }
         else
         {
-            std::cerr << "Index out of bounds!" << std::endl;
-            exit(EXIT_FAILURE);
+            cout << "error , out de l'element  " << endl;
         }
     }
 };
@@ -44,8 +43,8 @@ int main()
     vect[0] = 10;
     vect[1] = 20;
     vect[2] = 30;
-    std::cout << "Élément à l'indice 0: " << vect[0] << std::endl;
-    std::cout << "Élément à l'indice 1: " << vect[1] << std::endl;
-    std::cout << "Élément à l'indice 2: " << vect[2] << std::endl;
+    cout << "Élément à l'indice 0: " << vect[0] << endl;
+    cout << "Élément à l'indice 1: " << vect[1] << endl;
+    cout << "Élément à l'indice 2: " << vect[2] << endl;
     return 0;
 }
