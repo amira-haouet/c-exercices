@@ -18,6 +18,16 @@ public:
         }
     }
 
+ 
+    // Constructeur  copie
+    Vect(const Vect& other) {
+        nbElements = other.nbElements; // Copier le nombre d'éléments
+        Adresse = new int[nbElements]; // Allouer de la mémoire pour le nouveau tableau
+        for (int i = 0; i < nbElements; ++i) {
+            Adresse[i] = other.Adresse[i]; // Copier les éléments
+        }
+    }
+
     ~Vect()
     {
         delete[] Adresse;
